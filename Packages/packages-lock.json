@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.loderunner.composite": {
+      "version": "https://github.com/xloderunnerx/Composite.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "5628b859940d556a01bd27f8e1ad3715d3ce1359"
+    },
     "com.unity.2d.animation": {
       "version": "9.0.3",
       "depth": 1,
