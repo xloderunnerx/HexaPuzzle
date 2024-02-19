@@ -9,10 +9,16 @@ namespace App.Core.Hexagonal
     public class HexagonalGridModel
     {
         public List<HexagonalCellModel> grid;
+        public int radius;
 
         public HexagonalGridModel()
         {
             grid = new List<HexagonalCellModel>();
+        }
+
+        public HexagonalGridModel(List<HexagonalCellModel> grid)
+        {
+            this.grid = grid;
         }
 
         public void AddCell(HexagonalCellModel cellModel)

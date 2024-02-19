@@ -9,16 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50eac14a31300f24d8dc8c147da27cfd, type: 3}
-  m_Name: HexagonalGridModelGeneratorConfiguration
+  m_Script: {fileID: 11500000, guid: 537bb0b1f5eae6c4ca793f7520af6f5d, type: 3}
+  m_Name: HexagonalGridModelCutterConfiguration
   m_EditorClassIdentifier: 
   isEnabled: 1
-  radius: 25
-  scale: 0.7
-  octaves: 2
-  persistence: 0.5
-  lacunarity: 1
-  offset: {x: 778, y: -867}
-  amplitude: 1
-  frequency: 0.5
-  discardThreshold: 0.2
+  voronoiSeedsPercentage: 0.2

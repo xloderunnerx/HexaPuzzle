@@ -28,6 +28,7 @@ namespace App.Features.HexagonalGridModelGenerator
             var radius = configuration.radius;
             var gridCenter = new Vector3Hex(radius / 2, radius / 2, -radius / 2 - radius / 2);
             Debug.Log("GridCenter = " + gridCenter);
+            grid.radius = radius;
             for (int x = 0; x < radius; x++)
             {
                 for (int y = 0; y < radius; y++)
