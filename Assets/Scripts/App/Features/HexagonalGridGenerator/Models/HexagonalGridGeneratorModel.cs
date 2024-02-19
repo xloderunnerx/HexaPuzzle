@@ -15,9 +15,9 @@ namespace App.Features.HexagonalGridGenerator
 
         public void Generate()
         {
-            for(int x = 0; x < 15; x++)
+            for(int x = 0; x < 45; x++)
             {
-                for(int y = 0; y < 15; y++)
+                for(int y = 0; y < 45; y++)
                 {
                     HexagonalCellModel cellModel = new HexagonalCellModel(new Hexagonal.Vector3Hex(x,y,-x-y));
                     grid.AddCell(cellModel);

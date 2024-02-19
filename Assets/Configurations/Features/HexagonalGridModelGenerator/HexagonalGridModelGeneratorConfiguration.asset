@@ -9,12 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 559392a2da7a8bf42b06d3035fa9ca11, type: 3}
-  m_Name: FeatureGenerator
+  m_Script: {fileID: 11500000, guid: 50eac14a31300f24d8dc8c147da27cfd, type: 3}
+  m_Name: HexagonalGridModelGeneratorConfiguration
   m_EditorClassIdentifier: 
-  featureName: HexagonalGridViewPresenter
-  generateModel: 1
-  generateView: 1
-  generateController: 1
-  generateConfiguration: 1
-  generateFeature: 0
+  isEnabled: 1
+  radius: 15
