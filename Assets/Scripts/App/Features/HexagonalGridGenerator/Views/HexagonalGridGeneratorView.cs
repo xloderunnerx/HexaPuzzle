@@ -24,6 +24,7 @@ namespace App.Features.HexagonalGridGenerator
             gridModel.grid.ForEach(cellModel =>
             {
                 var cellView = Instantiate(cellViewPrefab, gridView.gameObject.transform);
+                cellView.SetPositionHex(cellModel.transform.position);
                 cellView.transform.position = new Vector3(cellModel.transform.position.x * cellViewWidth - cellModel.transform.position.x * cellViewWidth * 0.25f,
                     cellModel.transform.position.y * cellViewHeight + cellModel.transform.position.x * cellViewHeight * 0.5f, 0);
                 cellView.gameObject.name = $"X: {cellModel.transform.position.x}; Y: {cellModel.transform.position.y}; Z: {cellModel.transform.position.z}";
