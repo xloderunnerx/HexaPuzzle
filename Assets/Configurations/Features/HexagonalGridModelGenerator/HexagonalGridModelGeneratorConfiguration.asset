@@ -13,4 +13,12 @@ MonoBehaviour:
   m_Name: HexagonalGridModelGeneratorConfiguration
   m_EditorClassIdentifier: 
   isEnabled: 1
-  radius: 15
+  radius: 25
+  scale: 0.5
+  octaves: 4
+  persistence: 0.5
+  lacunarity: 2
+  offset: {x: 100, y: 100}
+  amplitude: 1
+  frequency: 1
+  discardThreshold: 0.5

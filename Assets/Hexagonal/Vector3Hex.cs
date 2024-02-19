@@ -33,6 +33,11 @@ namespace Hexagonal
             return HashCode.Combine(x, y, z);
         }
 
+        public override string ToString()
+        {
+            return $"({x}; {y}; {z})";
+        }
+
         public static bool operator !=(Vector3Hex lhs, Vector3Hex rhs)
         {
             if (lhs.x == rhs.x && lhs.y == rhs.y && lhs.z == rhs.z)

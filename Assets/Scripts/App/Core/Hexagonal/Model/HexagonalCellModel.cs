@@ -4,12 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace App.Core.Hexagonal
 {
     public class HexagonalCellModel
     {
         public TransformHex transform;
+        public Color debugColor;
 
         public HexagonalCellModel()
         {
