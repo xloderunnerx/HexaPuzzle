@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using App.Core.Hexagonal;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace App.Features.HexagonalGridGenerator

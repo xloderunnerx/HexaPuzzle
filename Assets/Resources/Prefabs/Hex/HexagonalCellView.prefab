@@ -46,6 +46,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: decac48270a6e0142aefb7342d3bbc30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  positionHex:
+    x: 0
+    y: 0
+    z: 0
   border: {fileID: 3563321118260797225}
   fill: {fileID: 666868269721263713}
 --- !u!1 &2429556927593310664
@@ -110,7 +114,7 @@ MonoBehaviour:
   stencilWriteMask: 255
   border: 0
   sides: 6
-  roundness: 0
+  roundness: 0.2
   angle: 0
   radius: 1
   angUnitInput: 1
@@ -236,7 +240,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blendMode: 1
   scaleMode: 0
-  color: {r: 0.5579744, g: 0.71432436, b: 0.764151, a: 1}
+  color: {r: 0.33919546, g: 0.4249575, b: 0.4528302, a: 1}
   detailLevel: 2
   renderQueue: -1
   zTest: 4
@@ -250,13 +254,13 @@ MonoBehaviour:
   stencilWriteMask: 255
   border: 1
   sides: 6
-  roundness: 0.272
+  roundness: 0.2
   angle: 0
   radius: 1
   angUnitInput: 1
   geometry: 0
   radiusSpace: 0
-  thickness: 0.2
+  thickness: 0.05
   thicknessSpace: 0
   matchDashSpacingToSize: 1
   dashed: 0

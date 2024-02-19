@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 559392a2da7a8bf42b06d3035fa9ca11, type: 3}
   m_Name: FeatureGenerator
   m_EditorClassIdentifier: 
-  featureName: HexagonalGridGenerator
-  generateModel: 0
+  featureName: HexagonalCell
+  generateModel: 1
   generateView: 1
   generateController: 1
   generateConfiguration: 1

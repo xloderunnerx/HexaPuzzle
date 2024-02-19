@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Features.HexagonalGridGenerator
+namespace App.Core.Hexagonal
 {
     public class HexagonalGridModel
     {
