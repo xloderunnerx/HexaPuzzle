@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b417fd14de8879b4bb953b5fc4af47a0, type: 3}
+  m_Name: HexagonalGridGeneratorConfiguration
+  m_EditorClassIdentifier: 
+  isEnabled: 1
+  hexagonalCellViewPrefab: {fileID: 4799200113399780065, guid: 6d260c9ad4b29fd498fc61f9f1c41989, type: 3}

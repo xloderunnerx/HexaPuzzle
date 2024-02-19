@@ -1,3 +1,4 @@
+using App.Features.HexagonalGridGenerator;
 using Composite.Core;
 
 public class CompositionRoot : AbstractCompositionRoot
@@ -23,6 +24,6 @@ public class CompositionRoot : AbstractCompositionRoot
 
     public void BindFeatures()
     {
-        
+        BindFeature<HexagonalGridGeneratorFeature>();
     }
 }
