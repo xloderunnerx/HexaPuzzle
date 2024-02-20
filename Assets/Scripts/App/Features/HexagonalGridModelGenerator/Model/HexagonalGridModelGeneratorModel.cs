@@ -1,4 +1,5 @@
 using App.Core.HexagonalGrid;
+using App.Utils;
 using Hexagonal;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,44 +39,14 @@ namespace App.Features.HexagonalGridModelGenerator
                     var distanceFromCenter = Vector3Hex.Distance(gridCenter, position);
                     if (distanceFromCenter > radius / 2)
                         continue;
-                    var perlinNoise = GeneratePerlinNoise(x, y, configuration);
+                    var parametrisedPerlinNoise = new ParametrisedPerlinNoise();
+                    var perlinNoise = parametrisedPerlinNoise.GeneratePerlinNoise(x, y, configuration.scale, configuration.amplitude, configuration.frequency, configuration.octaves, configuration.offset, configuration.persistence, configuration.lacunarity);
                     if (perlinNoise > configuration.discardThreshold * (radius / (1 + distanceFromCenter)))
                         continue;
                     HexagonalCellModel cellModel = new HexagonalCellModel(position);
                     grid.AddCell(cellModel);
                 }
             }            
-        }
-
-        private float GeneratePerlinNoise(float x, float y, HexagonalGridModelGeneratorConfiguration configuration)
-        {
-            if (configuration.scale <= 0)
-            {
-                configuration.scale = 0.0001f; // Prevent division by zero to avoid scaling issues
-            }
-
-            float maxPossibleHeight = 0;
-            float amplitude = configuration.amplitude;
-            float frequency = configuration.frequency;
-            float noiseHeight = 0;
-
-            for (int i = 0; i < configuration.octaves; i++)
-            {
-                float sampleX = (x + configuration.offset.x) * configuration.scale * frequency;
-                float sampleY = (y + configuration.offset.y) * configuration.scale * frequency;
-
-                float perlinValue = Mathf.PerlinNoise(sampleX, sampleY) * 2 - 1; // Shift to range [-1,1] for more dynamic range
-                noiseHeight += perlinValue * amplitude;
-
-                maxPossibleHeight += amplitude;
-
-                amplitude *= configuration.persistence; // Decrease amplitude each octave
-                frequency *= configuration.lacunarity; // Increase frequency each octave
-            }
-
-            // Normalize the noise value to ensure it is between 0 and 1
-            float normalizedHeight = (noiseHeight + maxPossibleHeight) / (2 * maxPossibleHeight);
-            return normalizedHeight;
         }
 
         private void CutFloatingHexes(HexagonalGridModelGeneratorConfiguration configuration)

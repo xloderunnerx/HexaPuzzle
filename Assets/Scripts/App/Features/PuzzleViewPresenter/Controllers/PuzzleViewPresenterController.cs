@@ -26,7 +26,6 @@ namespace App.Features.PuzzleViewPresenter
 		{
             puzzleView = new GameObject("PuzzleView").AddComponent<PuzzleView>();
             puzzleView.transform.parent = view.transform;
-            Debug.Log("INIT PRESENTER");
 		}
 
         public override void SubscribeToSignals()
@@ -50,7 +49,7 @@ namespace App.Features.PuzzleViewPresenter
                 segmentModel.segment.ForEach(cellModel => {
                     var cellView = GameObject.Instantiate(configuration.puzzleCellViewPrefab, segmentView.transform);
                     cellView.SetPositionHex(cellModel.transform.position);
-                    //cellView.SetFillColor(cell.debugColor);
+                    cellView.SetFillColor(cellModel.fillColor);
                     cellView.transform.position = new Vector3(cellModel.transform.position.x * cellViewWidth - cellModel.transform.position.x * cellViewWidth * 0.25f,
                         cellModel.transform.position.y * cellViewHeight + cellModel.transform.position.x * cellViewHeight * 0.5f, 0);
                     cellView.gameObject.name = $"X: {cellModel.transform.position.x}; Y: {cellModel.transform.position.y}; Z: {cellModel.transform.position.z}";

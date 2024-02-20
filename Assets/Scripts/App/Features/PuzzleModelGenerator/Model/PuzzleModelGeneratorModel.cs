@@ -19,6 +19,7 @@ namespace App.Features.PuzzleModelGenerator
         public void GeneratePuzzleModel(HexagonalGridModel gridModel, PuzzleModelGeneratorConfiguration configuration)
         {
             puzzleModel = DivideGridIntoVoronoiSegments(gridModel, configuration.segmentsCount);
+            puzzleModel.radius = gridModel.radius;
             puzzleModel.RemoveEmptySegments();
         }
 

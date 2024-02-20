@@ -15,6 +15,8 @@ namespace App.Core.Puzzle
 
         public void SetFillColor(Color value) => fill.Color = value;
 
+        public Color GetFillColor() => fill.Color;
+
         public float GetSizeWithoutBorder() => fill.Radius;
     }
 }

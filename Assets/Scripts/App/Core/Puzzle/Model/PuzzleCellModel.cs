@@ -8,6 +8,7 @@ namespace App.Core.Puzzle
     public class PuzzleCellModel
     {
         public TransformHex transform;
+        public Color fillColor;
 
         public PuzzleCellModel()
         {

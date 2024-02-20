@@ -9,6 +9,7 @@ namespace App.Core.Puzzle
     public class PuzzleModel
     {
         public List<PuzzleSegmentModel> puzzle;
+        public int radius;
 
         public PuzzleModel()
         {
@@ -38,6 +39,19 @@ namespace App.Core.Puzzle
         public void RemoveEmptySegments()
         {
             puzzle = puzzle.Where(segment => segment.segment.Count != 0).ToList();
+        }
+
+        public List<PuzzleCellModel> GetCells()
+        {
+            var cells = new List<PuzzleCellModel>();
+            puzzle.ForEach(segment =>
+            {
+                segment.segment.ForEach(cell =>
+                {
+                    cells.Add(cell);
+                });
+            });
+            return cells;
         }
     }
 }
