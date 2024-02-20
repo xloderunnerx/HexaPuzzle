@@ -20,5 +20,13 @@ namespace App.Core.Puzzle
             segment.Remove(puzzleCellView);
             Destroy(puzzleCellView.gameObject);
         }
+
+        public void RemoveAndDestroyAll()
+        {
+            for (int i = segment.Count - 1; i >= 0; i--)
+            {
+                RemoveAndDestroyCell(segment[i]);
+            }
+        }
     }
 }

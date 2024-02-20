@@ -1,4 +1,3 @@
-using App.Features.HexagonalGridModelCutter;
 using App.Features.HexagonalGridModelGenerator;
 using App.Features.HexagonalGridViewPresenter;
 using App.Features.PuzzleModelGenerator;
@@ -31,7 +30,6 @@ public class CompositionRoot : AbstractCompositionRoot
         BindFeature<PuzzleViewPresenterFeature>();
         BindFeature<HexagonalGridViewPresenterFeature>();
         BindFeature<HexagonalGridModelGeneratorFeature>();
-        BindFeature<HexagonalGridModelCutterFeature>();
         BindFeature<PuzzleModelGeneratorFeature>();
     }
 }

@@ -11,7 +11,6 @@ namespace App.Core.HexagonalGrid
     public class HexagonalCellModel
     {
         public TransformHex transform;
-        public Color debugColor;
 
         public HexagonalCellModel()
         {

@@ -19,12 +19,7 @@ namespace App.Features.PuzzleModelGenerator
         public void GeneratePuzzleModel(HexagonalGridModel gridModel, PuzzleModelGeneratorConfiguration configuration)
         {
             puzzleModel = DivideGridIntoVoronoiSegments(gridModel, configuration.segmentsCount);
-
-            Debug.Log("Segments Count = " + puzzleModel.puzzle.Count);
-            puzzleModel.puzzle.ForEach(segment =>
-            {
-                Debug.Log("Cells in segment = " + segment.segment.Count);
-            });
+            puzzleModel.RemoveEmptySegments();
         }
 
         private PuzzleModel DivideGridIntoVoronoiSegments(HexagonalGridModel gridModel, int numberOfSegments)

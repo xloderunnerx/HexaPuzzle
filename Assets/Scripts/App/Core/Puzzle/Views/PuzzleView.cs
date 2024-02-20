@@ -23,7 +23,10 @@ namespace App.Core.Puzzle
 
         public void RemoveAndDestroyAll()
         {
-            puzzle.ForEach(segment => RemoveAndDestroySegment(segment));
+            for (int i = puzzle.Count - 1; i >= 0; i--)
+            {
+                RemoveAndDestroySegment(puzzle[i]);
+            }
         }
     }
 }

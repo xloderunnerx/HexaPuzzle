@@ -510,7 +510,6 @@ MonoBehaviour:
   configurations:
   - {fileID: 11400000, guid: 697f066ed1ff1024d975c61b2fe358ce, type: 2}
   - {fileID: 11400000, guid: 4b03f5c593603ea45917c24d9dcee9f9, type: 2}
-  - {fileID: 11400000, guid: ee0a8a1c04b2f804da702b3b927d62ae, type: 2}
   - {fileID: 11400000, guid: a0d7eb780a1ae684382a6df3bd1f445e, type: 2}
   - {fileID: 11400000, guid: 9d1db20984eb8dc41b622a64b09e4999, type: 2}
 --- !u!1 &634151862

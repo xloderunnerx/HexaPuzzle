@@ -15,19 +15,20 @@ namespace App.Features.HexagonalGridModelGenerator
         {
             grid = new HexagonalGridModel();
             GenerateGrid(configuration);
+            CutFloatingHexes(configuration);
         }
 
         public void Regenerate(HexagonalGridModelGeneratorConfiguration configuration)
         {
             grid.grid.Clear();
             GenerateGrid(configuration);
+            CutFloatingHexes(configuration);
         }
 
         private void GenerateGrid(HexagonalGridModelGeneratorConfiguration configuration)
         {
             var radius = configuration.radius;
             var gridCenter = new Vector3Hex(radius / 2, radius / 2, -radius / 2 - radius / 2);
-            Debug.Log("GridCenter = " + gridCenter);
             grid.radius = radius;
             for (int x = 0; x < radius; x++)
             {
@@ -38,14 +39,12 @@ namespace App.Features.HexagonalGridModelGenerator
                     if (distanceFromCenter > radius / 2)
                         continue;
                     var perlinNoise = GeneratePerlinNoise(x, y, configuration);
-                    if (perlinNoise > configuration.discardThreshold * (radius / (1 + distanceFromCenter)) /* && distanceFromCenter > radius / 4*/)
+                    if (perlinNoise > configuration.discardThreshold * (radius / (1 + distanceFromCenter)))
                         continue;
                     HexagonalCellModel cellModel = new HexagonalCellModel(position);
                     grid.AddCell(cellModel);
                 }
-            }
-
-            CutFloatingHexes(configuration);
+            }            
         }
 
         private float GeneratePerlinNoise(float x, float y, HexagonalGridModelGeneratorConfiguration configuration)
@@ -86,7 +85,6 @@ namespace App.Features.HexagonalGridModelGenerator
             var centralHexModel = grid.grid.Where(cell => cell.transform.position == gridCenter).FirstOrDefault();
 
             var connectedHexModels = FindConnectedCells(grid.grid, centralHexModel);
-            connectedHexModels.ForEach(cell => cell.debugColor = Color.red);
             grid.grid.Clear();
             grid.grid = connectedHexModels;
         }

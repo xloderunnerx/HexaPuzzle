@@ -23,45 +23,19 @@ namespace App.Features.HexagonalGridViewPresenter
 
         public override void Initialize()
 		{
+            gridView = new GameObject("HexagonalGridView").AddComponent<HexagonalGridView>();
+            gridView.transform.parent = view.transform;
 		}
 
         public override void SubscribeToSignals()
         {
-            //SubscribeToSignal<OnHexagonalGridModelGenerated>(Present);
-            SubscribeToSignal<OnHexagonalGridModelCut>(Present);
-        }
-
-        private void Present(OnHexagonalGridModelCut signal)
-        {
-            Discard();
-            var gridCutModel = signal.GridCutModel;
-            gridView = new GameObject("Grid").AddComponent<HexagonalGridView>();
-            gridView.gameObject.transform.parent = view.transform;
-
-            var cellViewSize = configuration.hexagonalCellViewPrefab.GetSizeWithoutBorder();
-
-            var cellViewWidth = cellViewSize * 2;
-            var cellViewHeight = Mathf.Sqrt(3) * cellViewSize;
-
-            gridCutModel.gridSegments.ForEach(gridModel => {
-                gridModel.grid.ForEach(cellModel => {
-                    var cellView = GameObject.Instantiate(configuration.hexagonalCellViewPrefab, gridView.gameObject.transform);
-                    cellView.SetPositionHex(cellModel.transform.position);
-                    cellView.SetFillColor(cellModel.debugColor);
-                    cellView.transform.position = new Vector3(cellModel.transform.position.x * cellViewWidth - cellModel.transform.position.x * cellViewWidth * 0.25f,
-                        cellModel.transform.position.y * cellViewHeight + cellModel.transform.position.x * cellViewHeight * 0.5f, 0);
-                    cellView.gameObject.name = $"X: {cellModel.transform.position.x}; Y: {cellModel.transform.position.y}; Z: {cellModel.transform.position.z}";
-                    gridView.grid.Add(cellView);
-                });
-            });
+            SubscribeToSignal<OnHexagonalGridModelGenerated>(Present);
         }
 
         private void Present(OnHexagonalGridModelGenerated signal)
         {
             Discard();
             var gridModel = signal.HexagonalGridModel;
-            gridView = new GameObject("Grid").AddComponent<HexagonalGridView>();
-            gridView.gameObject.transform.parent = view.transform;
 
             var cellViewSize = configuration.hexagonalCellViewPrefab.GetSizeWithoutBorder();
 
@@ -70,9 +44,8 @@ namespace App.Features.HexagonalGridViewPresenter
 
             gridModel.grid.ForEach(cellModel =>
             {
-                var cellView = GameObject.Instantiate(configuration.hexagonalCellViewPrefab, gridView.gameObject.transform);
+                var cellView = GameObject.Instantiate(configuration.hexagonalCellViewPrefab, gridView.transform);
                 cellView.SetPositionHex(cellModel.transform.position);
-                cellView.SetFillColor(cellModel.debugColor);
                 cellView.transform.position = new Vector3(cellModel.transform.position.x * cellViewWidth - cellModel.transform.position.x * cellViewWidth * 0.25f,
                     cellModel.transform.position.y * cellViewHeight + cellModel.transform.position.x * cellViewHeight * 0.5f, 0);
                 cellView.gameObject.name = $"X: {cellModel.transform.position.x}; Y: {cellModel.transform.position.y}; Z: {cellModel.transform.position.z}";
@@ -82,14 +55,7 @@ namespace App.Features.HexagonalGridViewPresenter
 
         private void Discard()
         {
-            if (gridView == null)
-                return;
-            if (gridView.grid == null)
-                return;
-            gridView.grid.ForEach(cell => GameObject.Destroy(cell.gameObject));
-            gridView.grid = null;
-            GameObject.Destroy(gridView.gameObject);
-            gridView = null;
+            gridView.RemoveAndDestroyAll();
         }
     }
 }

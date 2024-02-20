@@ -34,5 +34,10 @@ namespace App.Core.Puzzle
         {
             puzzle.Clear();
         }
+
+        public void RemoveEmptySegments()
+        {
+            puzzle = puzzle.Where(segment => segment.segment.Count != 0).ToList();
+        }
     }
 }
