@@ -1,58 +1,54 @@
 using App.Core.HexagonalGrid;
+using App.Core.Puzzle;
 using Hexagonal;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
+using System.Linq;
 
-namespace App.Features.HexagonalGridModelCutter
+namespace App.Features.PuzzleModelGenerator
 {
-    public class HexagonalGridModelCutterModel
+    public class PuzzleModelGeneratorModel
     {
-        public HexagonalGridCutModel hexagonalGridSegments;
+        public PuzzleModel puzzleModel;
 
-        public HexagonalGridModelCutterModel()
+        public PuzzleModelGeneratorModel()
         {
-            hexagonalGridSegments = new HexagonalGridCutModel();
+            puzzleModel = new PuzzleModel();
         }
 
-        public void Cut(HexagonalGridModel gridModel, HexagonalGridModelCutterConfiguration configuration)
+        public void GeneratePuzzleModel(HexagonalGridModel gridModel, PuzzleModelGeneratorConfiguration configuration)
         {
-            hexagonalGridSegments.gridSegments.Clear();
-            var segmentsCount = (int)((float)gridModel.grid.Count * configuration.voronoiSeedsPercentage);
-            var segments = DivideGridIntoVoronoiSegments(gridModel, segmentsCount);
-            segments.ForEach(segment =>
+            puzzleModel = DivideGridIntoVoronoiSegments(gridModel, configuration.segmentsCount);
+
+            Debug.Log("Segments Count = " + puzzleModel.puzzle.Count);
+            puzzleModel.puzzle.ForEach(segment =>
             {
-                var color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0, 1));
-                segment.ForEach(hexagonalCellModel =>
-                {
-                    hexagonalCellModel.debugColor = color;
-                });
+                Debug.Log("Cells in segment = " + segment.segment.Count);
             });
-            segments.ForEach(segment => hexagonalGridSegments.gridSegments.Add(new HexagonalGridModel(segment)));
         }
 
-        private List<List<HexagonalCellModel>> DivideGridIntoVoronoiSegments(HexagonalGridModel gridModel, int numberOfSegments)
+        private PuzzleModel DivideGridIntoVoronoiSegments(HexagonalGridModel gridModel, int numberOfSegments)
         {
             // Generate seed points
             List<Vector3Hex> seedPoints = GenerateSeedPoints(gridModel, numberOfSegments);
 
             // Initialize a dictionary to hold segment assignments
-            Dictionary<Vector3Hex, List<HexagonalCellModel>> segments = new Dictionary<Vector3Hex, List<HexagonalCellModel>>();
+            Dictionary<Vector3Hex, PuzzleSegmentModel> segments = new Dictionary<Vector3Hex, PuzzleSegmentModel>();
 
             foreach (var seedPoint in seedPoints)
             {
-                segments[seedPoint] = new List<HexagonalCellModel>();
+                segments[seedPoint] = new PuzzleSegmentModel();
             }
 
             // Assign cells to the nearest seed point
             foreach (var cell in gridModel.grid)
             {
                 Vector3Hex closestSeed = FindClosestSeedPoint(cell.transform.position, seedPoints);
-                segments[closestSeed].Add(cell);
+                segments[closestSeed].AddCell(new PuzzleCellModel(cell.transform.position));
             }
 
             // Convert dictionary values to a List<List<HexagonalCellModel>>
-            return segments.Values.ToList();
+            return new PuzzleModel(segments.Values.ToList());
         }
 
         private List<Vector3Hex> GenerateSeedPoints(HexagonalGridModel gridModel, int numberOfSegments)

@@ -9,5 +9,14 @@ namespace Hexagonal
     public class TransformHex
     {
         public Vector3Hex position;
+
+        public TransformHex()
+        {
+        }
+
+        public TransformHex(Vector3Hex position)
+        {
+            this.position = position;
+        }
     }
 }

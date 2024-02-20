@@ -1,4 +1,4 @@
-using App.Core.Hexagonal;
+using App.Core.HexagonalGrid;
 using Hexagonal;
 using System.Collections.Generic;
 using System.Linq;

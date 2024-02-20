@@ -1,13 +1,16 @@
-using App.Core.Hexagonal;
+using App.Core.HexagonalGrid;
 
-public class OnHexagonalGridModelGenerated
+namespace App.Core.Signals
 {
-    private HexagonalGridModel hexagonalGridModel;
-
-    public OnHexagonalGridModelGenerated(HexagonalGridModel hexagonalGridModel)
+    public class OnHexagonalGridModelGenerated
     {
-        this.hexagonalGridModel = hexagonalGridModel;
-    }
+        private HexagonalGridModel hexagonalGridModel;
 
-    public HexagonalGridModel HexagonalGridModel { get => hexagonalGridModel; private set => hexagonalGridModel = value; }
+        public OnHexagonalGridModelGenerated(HexagonalGridModel hexagonalGridModel)
+        {
+            this.hexagonalGridModel = hexagonalGridModel;
+        }
+
+        public HexagonalGridModel HexagonalGridModel { get => hexagonalGridModel; private set => hexagonalGridModel = value; }
+    }
 }
