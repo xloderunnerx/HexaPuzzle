@@ -13,3 +13,13 @@ MonoBehaviour:
   m_Name: PuzzlePainterConfiguration
   m_EditorClassIdentifier: 
   isEnabled: 1
+  analogousColorHarmonySeparation: 120
+  scale: 0.1
+  octaves: 4
+  persistence: 0.5
+  lacunarity: 1
+  offset: {x: 0, y: 0}
+  amplitude: 1
+  frequency: 2
+  discardThreshold: 0.5
+  segmentsCount: 15

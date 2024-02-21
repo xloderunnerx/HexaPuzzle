@@ -14,10 +14,14 @@ namespace App.Features.PuzzlePainter
             puzzlePainterBehaviours = new List<IPuzzlePainterBehaviour>();
             puzzleColorBehaviours = new List<IPuzzleColorBehaviour>();
 
-            puzzlePainterBehaviours.Add(new LinearGradientPuzzleShapeBehaviour());
+            //puzzlePainterBehaviours.Add(new LinearGradientPuzzleShapeBehaviour());
+            puzzlePainterBehaviours.Add(new PerlinPuzzlePainterBehaviour());
+            puzzlePainterBehaviours.Add(new VoronoiPuzzlePainterBehaviour());
 
             //puzzleColorBehaviours.Add(new ComplementaryPuzzleColorBehaviour());
-            puzzleColorBehaviours.Add(new AnalogousPuzzleColorBehaviour(configuration.analogousColorHarmonySeparation));
+            //puzzleColorBehaviours.Add(new ComplementaryDarkenPuzzleColorBehaviour());
+            puzzleColorBehaviours.Add(new AnalogousPuzzleColorBehaviour());
+            puzzleColorBehaviours.Add(new TriadicPuzzleColorBehaviour());
         }
 
         public void PaintPuzzle(PuzzleModel puzzleModel, PuzzlePainterConfiguration puzzlePainterConfiguration)

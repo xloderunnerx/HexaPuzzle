@@ -1,5 +1,5 @@
 ﻿using App.Core.Puzzle;
-using System;
+using App.Utils;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,18 +8,18 @@ using UnityEngine;
 
 namespace App.Features.PuzzlePainter
 {
-    public class LinearGradientPuzzleShapeBehaviour : IPuzzlePainterBehaviour
+    public class PerlinPuzzlePainterBehaviour : IPuzzlePainterBehaviour
     {
         public void Paint(PuzzleModel puzzleModel, PuzzlePainterConfiguration configuration, IPuzzleColorBehaviour puzzleColorBehaviour)
         {
-            var colors = puzzleColorBehaviour.GetColors(configuration);
+            var perlinNoise = new ParametrisedPerlinNoise();
             var cells = puzzleModel.GetCells();
-            var minX = cells.Select(cell => cell.transform.position.x).ToList().Min();
-            var maxX = cells.Select(cell => cell.transform.position.x).ToList().Max();
-
-            cells.ForEach(cell => {
-                var t = (float)cell.transform.position.x / (float)puzzleModel.radius;
-                cell.fillColor = GetInterpolatedColor(colors, t);
+            var colors = puzzleColorBehaviour.GetColors(configuration);
+            var offset = new Vector2(Random.Range(-1000, 1000), Random.Range(-1000, 1000));
+            cells.ForEach(cell =>
+            {
+                var perlinValue = perlinNoise.GeneratePerlinNoise(cell.transform.position.x, cell.transform.position.y, configuration.scale, configuration.amplitude, configuration.frequency, configuration.octaves, offset, configuration.persistence, configuration.lacunarity);
+                cell.fillColor = GetInterpolatedColor(colors, perlinValue);
             });
         }
 

@@ -5,6 +5,6 @@ namespace App.Features.PuzzlePainter
 {
     public interface IPuzzleColorBehaviour
     {
-        public List<Color> GetColors();
+        public List<Color> GetColors(PuzzlePainterConfiguration configuration);
     }
 }

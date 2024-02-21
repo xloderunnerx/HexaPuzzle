@@ -7,6 +7,7 @@ namespace App.Features.HexagonalGridModelGenerator
 		public override void InstallBindings()
 		{
 			CompositionRoot.Bind<HexagonalGridModelGeneratorModel>();
+			CompositionRoot.BindFromHierarchy<HexagonalGridModelGeneratorView>();
 			CompositionRoot.BindController<HexagonalGridModelGeneratorController>();
 		}
 

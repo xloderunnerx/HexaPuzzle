@@ -5,17 +5,11 @@ namespace App.Features.PuzzlePainter
 {
     public class AnalogousPuzzleColorBehaviour : IPuzzleColorBehaviour
     {
-        private float separation;
-
-        public AnalogousPuzzleColorBehaviour(float separation)
-        {
-            this.separation = separation;
-        }
-
-        public List<Color> GetColors()
+        public List<Color> GetColors(PuzzlePainterConfiguration configuration)
         {
             var result = new List<Color>();
             var firstColor = Color.HSVToRGB(Random.Range(0f, 1f), Random.Range(0.9f, 1f), Random.Range(0.9f, 1f));
+            var separation = configuration.analogousColorHarmonySeparation;
             separation /= 360f;
 
             float H, S, V;
@@ -30,6 +24,7 @@ namespace App.Features.PuzzlePainter
             result.Add(leftColor);
             result.Add(firstColor);
             result.Add(rightColor);
+
             return result;
         }
     }
