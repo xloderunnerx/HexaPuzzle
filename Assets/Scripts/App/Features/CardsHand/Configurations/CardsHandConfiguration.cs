@@ -1,3 +1,4 @@
+using App.Core.CardsHand;
 using UnityEngine;
 
 namespace App.Features.CardsHand
@@ -6,5 +7,6 @@ namespace App.Features.CardsHand
 	public class CardsHandConfiguration : AbstractConfiguration
 	{
 		public CardView cardViewPrefab;
+		public int defaultSortingOrder;
 	}
 }

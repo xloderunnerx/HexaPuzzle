@@ -1,6 +1,7 @@
 using App.Core.Signals;
 using Composite.Core;
 using System;
+using UnityEngine;
 
 namespace App.Features.CardsHand
 {
@@ -29,6 +30,18 @@ namespace App.Features.CardsHand
         private void GenerateCardsModel(OnPuzzleModelGenerated signal)
         {
             model.GenerateCardModels(signal.PuzzleModel);
+            GenerateCardViews();
+        }
+
+        private void GenerateCardViews()
+        {
+            var iterator = 0;
+            model.cards.ForEach(card => {
+                var cardView = GameObject.Instantiate(configuration.cardViewPrefab);
+                cardView.gameObject.transform.SetParent(view.CardsHandPanel.transform, false);
+                cardView.SetSortingOrder(configuration.defaultSortingOrder + iterator);
+                iterator++;
+            });
         }
     }
 }
