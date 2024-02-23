@@ -1,3 +1,5 @@
+using App.Features.Data;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace App.Features.PuzzlePainter
@@ -20,5 +22,8 @@ namespace App.Features.PuzzlePainter
 
         [Header("Voronoi")]
         public int segmentsCount = 15;
+
+        [Header("Predefined Color")]
+        public List<ColorList> predefinedPalette;
     }
 }
