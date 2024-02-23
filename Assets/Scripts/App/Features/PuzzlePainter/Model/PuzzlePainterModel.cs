@@ -20,8 +20,9 @@ namespace App.Features.PuzzlePainter
 
             //puzzleColorBehaviours.Add(new ComplementaryPuzzleColorBehaviour());
             //puzzleColorBehaviours.Add(new ComplementaryDarkenPuzzleColorBehaviour());
-            puzzleColorBehaviours.Add(new AnalogousPuzzleColorBehaviour());
-            puzzleColorBehaviours.Add(new TriadicPuzzleColorBehaviour());
+            //puzzleColorBehaviours.Add(new AnalogousPuzzleColorBehaviour());
+            //puzzleColorBehaviours.Add(new TriadicPuzzleColorBehaviour());
+            puzzleColorBehaviours.Add(new PreDefinedPuzzleColorBehaviour());
         }
 
         public void PaintPuzzle(PuzzleModel puzzleModel, PuzzlePainterConfiguration puzzlePainterConfiguration)
