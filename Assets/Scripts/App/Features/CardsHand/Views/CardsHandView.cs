@@ -5,5 +5,6 @@ namespace App.Features.CardsHand
 {
 	public class CardsHandView : AbstractView
 	{
+		[SerializeField] private RectTransform CardsHandPanel;
 	}
 }
