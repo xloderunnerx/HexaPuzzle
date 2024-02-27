@@ -35,12 +35,13 @@ namespace App.Features.CardsHand
 
         private void GenerateCardViews()
         {
-            var iterator = 0;
-            model.cards.ForEach(card => {
+            var lastHighestSortingOrder = configuration.defaultSortingOrder;
+            model.cards.ForEach(cardModel => {
                 var cardView = GameObject.Instantiate(configuration.cardViewPrefab);
                 cardView.gameObject.transform.SetParent(view.CardsHandPanel.transform, false);
-                cardView.SetSortingOrder(configuration.defaultSortingOrder + iterator);
-                iterator++;
+                cardView.SetSortingOrder(configuration.defaultSortingOrder + lastHighestSortingOrder);
+                cardView.SetCardModel(cardModel);
+                lastHighestSortingOrder = cardView.GetHighestSortingOrder();
             });
         }
     }
