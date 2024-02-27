@@ -1,3 +1,4 @@
+using App.Core;
 using App.Core.Hexagonal;
 using App.Core.Signals;
 using Composite.Core;
@@ -27,6 +28,11 @@ namespace App.Features.HexagonalGridViewPresenter
             gridView.transform.parent = view.transform;
 		}
 
+        public override void DeclareSignals()
+        {
+            DeclareSignal<OnHexagonalGridViewPresented>();
+        }
+
         public override void SubscribeToSignals()
         {
             SubscribeToSignal<OnHexagonalGridModelGenerated>(Present);
@@ -37,7 +43,7 @@ namespace App.Features.HexagonalGridViewPresenter
             Discard();
             var gridModel = signal.HexagonalGridModel;
 
-            var cellViewSize = configuration.hexagonalCellViewPrefab.GetSizeWithoutBorder();
+            var cellViewSize = configuration.hexagonalCellViewPrefab.GetSizeBorder();
 
             var cellViewWidth = cellViewSize * 2;
             var cellViewHeight = Mathf.Sqrt(3) * cellViewSize;
@@ -51,6 +57,7 @@ namespace App.Features.HexagonalGridViewPresenter
                 cellView.gameObject.name = $"X: {cellModel.transform.position.x}; Y: {cellModel.transform.position.y}; Z: {cellModel.transform.position.z}";
                 gridView.grid.Add(cellView);
             });
+            TryFireSignal(new OnHexagonalGridViewPresented(gridView));
         }
 
         private void Discard()

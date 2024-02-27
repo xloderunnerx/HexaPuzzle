@@ -18,7 +18,7 @@ MonoBehaviour:
   octaves: 2
   persistence: 0.5
   lacunarity: 1
-  offset: {x: 778, y: -867}
+  offset: {x: 747, y: 962}
   amplitude: 1
   frequency: 0.5
   discardThreshold: 0.2
