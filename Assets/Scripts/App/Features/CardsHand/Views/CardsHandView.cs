@@ -14,9 +14,9 @@ namespace App.Features.CardsHand
             cardsHandModel.cards.ForEach(cardModel => {
                 var cardView = GameObject.Instantiate(configuration.cardViewPrefab);
                 cardView.gameObject.transform.SetParent(cardsHandPanel, false);
-                cardView.SetSortingOrder(configuration.defaultSortingOrder + lastHighestSortingOrder);
                 cardView.SetCardModel(cardModel);
                 cardView.GeneratePuzzleSegmentView(cardModel, configuration);
+                cardView.SetSortingOrder(configuration.defaultSortingOrder + lastHighestSortingOrder);
                 lastHighestSortingOrder = cardView.GetHighestSortingOrder();
             });
         }

@@ -74,27 +74,15 @@ namespace App.Features.CardsHand
                 .ToList()
                 .ForEach(cardPuzzleCellView => bounds.Encapsulate(cardPuzzleCellView.GetWorldBoundsWithoutBorder()));
             var centerSegmentPosition = bounds.center;
-            Debug.Log($"{gameObject.name} center Position is = " + centerSegmentPosition);
             transform.position = centerSegmentPosition;
             segment.ForEach(cardPuzzleCellView => cardPuzzleCellView.transform.SetParent(transform, true));
         }
 
-        private void OnDrawGizmos()
+        public int SetSortingOrder(int value)
         {
-            var centerSegmentPosition = Vector2.zero;
-            segment.ForEach(cardPuzzleCellView => centerSegmentPosition += (Vector2)cardPuzzleCellView.transform.position);
-            centerSegmentPosition /= segment.Count;
-
-
-            Bounds bounds = new Bounds(transform.position, Vector3.zero);
-
-            segment.ForEach(cardPuzzleCellView => bounds.Encapsulate(cardPuzzleCellView.GetWorldBoundsWithoutBorder()));
-
-            var centerSegmentBoundsPosition = bounds.center;
-
-            Gizmos.DrawSphere(bounds.min, 0.2f);
-            Gizmos.DrawSphere(bounds.max, 0.2f);
-            Gizmos.DrawSphere(bounds.center, 0.4f);
+            segment.ForEach(cardPuzzleCellView => cardPuzzleCellView.SetSortingOrder(value));
+            var lastSortingOrder = segment.LastOrDefault().SetSortingOrder(value);
+            return lastSortingOrder;
         }
     }
 }

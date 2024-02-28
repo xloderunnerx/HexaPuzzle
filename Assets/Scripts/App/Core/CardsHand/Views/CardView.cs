@@ -23,7 +23,7 @@ namespace App.Core.CardsHand
         {
             background.SortingOrder = value;
             border.SortingOrder = background.SortingOrder + 1;
-
+            cardPuzzleSegmentView.SetSortingOrder(value);
         }
 
         public int GetHighestSortingOrder() => border.SortingOrder;
@@ -47,9 +47,7 @@ namespace App.Core.CardsHand
         private void ResizeSegmentToLayout()
         {
             var segmentWorldSize = cardPuzzleSegmentView.GetSegmentWorldSize();
-            Debug.Log($"{cardPuzzleSegmentView.gameObject.name} = " + cardPuzzleSegmentView.GetSegmentWorldSize());
             var layoutWorldSize = puzzleSegmentLayout.sizeDelta * puzzleSegmentLayout.lossyScale;
-            Debug.Log("layoutWorld Size = " + layoutWorldSize);
             var scaleX = layoutWorldSize.x / segmentWorldSize.x;
             var scaleY = layoutWorldSize.y / segmentWorldSize.y;
 
