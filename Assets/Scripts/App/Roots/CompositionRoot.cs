@@ -3,6 +3,7 @@ using App.Features.HexagonalGridModelGenerator;
 using App.Features.HexagonalGridViewPresenter;
 using App.Features.PuzzleModelGenerator;
 using App.Features.PuzzlePainter;
+using App.Features.CameraFocus;
 using App.Features.PuzzleViewPresenter;
 using Composite.Core;
 
@@ -34,6 +35,7 @@ public class CompositionRoot : AbstractCompositionRoot
         BindFeature<PuzzleViewPresenterFeature>();
         BindFeature<HexagonalGridViewPresenterFeature>();
         BindFeature<HexagonalGridModelGeneratorFeature>();
+        BindFeature<CameraFocusFeature>();
         BindFeature<PuzzleModelGeneratorFeature>();
     }
 }

@@ -9,12 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 559392a2da7a8bf42b06d3035fa9ca11, type: 3}
-  m_Name: FeatureGenerator
+  m_Script: {fileID: 11500000, guid: ba99eb96c96d174458d2eed7f1b0a438, type: 3}
+  m_Name: CameraFocusConfiguration
   m_EditorClassIdentifier: 
-  featureName: CameraFocus
-  generateModel: 1
-  generateView: 1
-  generateController: 1
-  generateConfiguration: 1
-  generateFeature: 0
+  isEnabled: 1
