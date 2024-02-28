@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8ea02fc25b370b43bb826cd8e656e74, type: 3}
   m_Name: HexagonalGridViewPresenterConfiguration
   m_EditorClassIdentifier: 
-  isEnabled: 1
+  isEnabled: 0
   hexagonalCellViewPrefab: {fileID: 4799200113399780065, guid: 6d260c9ad4b29fd498fc61f9f1c41989, type: 3}

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a57604234eacb744b474dac77b81f6c, type: 3}
   m_Name: PuzzleViewPresenterConfiguration
   m_EditorClassIdentifier: 
-  isEnabled: 1
+  isEnabled: 0
   puzzleCellViewPrefab: {fileID: 6075123911689333368, guid: dde559b5af1949942a016f41857bb0d5, type: 3}

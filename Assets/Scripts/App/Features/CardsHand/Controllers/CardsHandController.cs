@@ -1,3 +1,4 @@
+using App.Core;
 using App.Core.Signals;
 using Composite.Core;
 using System;
@@ -30,19 +31,7 @@ namespace App.Features.CardsHand
         private void GenerateCardsModel(OnPuzzleModelGenerated signal)
         {
             model.GenerateCardModels(signal.PuzzleModel);
-            GenerateCardViews();
-        }
-
-        private void GenerateCardViews()
-        {
-            var lastHighestSortingOrder = configuration.defaultSortingOrder;
-            model.cards.ForEach(cardModel => {
-                var cardView = GameObject.Instantiate(configuration.cardViewPrefab);
-                cardView.gameObject.transform.SetParent(view.CardsHandPanel.transform, false);
-                cardView.SetSortingOrder(configuration.defaultSortingOrder + lastHighestSortingOrder);
-                cardView.SetCardModel(cardModel);
-                lastHighestSortingOrder = cardView.GetHighestSortingOrder();
-            });
+            view.GenerateCards(model, configuration);
         }
     }
 }

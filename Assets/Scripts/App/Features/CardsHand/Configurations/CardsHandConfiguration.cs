@@ -7,6 +7,7 @@ namespace App.Features.CardsHand
 	public class CardsHandConfiguration : AbstractConfiguration
 	{
 		public CardView cardViewPrefab;
+		public CardPuzzleCellView cardPuzzleCellViewPrefab;
 		public int defaultSortingOrder;
 	}
 }

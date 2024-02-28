@@ -238,6 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2356abe07b08db84781a507a1bb9b1b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardsHandPanel: {fileID: 192209546}
 --- !u!1 &192209545
 GameObject:
   m_ObjectHideFlags: 0
