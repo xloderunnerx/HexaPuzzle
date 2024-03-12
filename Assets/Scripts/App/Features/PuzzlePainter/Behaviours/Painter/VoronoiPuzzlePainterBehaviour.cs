@@ -1,4 +1,4 @@
-﻿using App.Core.HexagonalGrid;
+﻿using App.Core.Grid;
 using App.Core.Puzzle;
 using Hexagonal;
 using UnityEngine;

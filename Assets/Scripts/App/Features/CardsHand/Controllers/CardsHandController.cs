@@ -25,10 +25,10 @@ namespace App.Features.CardsHand
 
         public override void SubscribeToSignals()
         {
-            SubscribeToSignal<OnPuzzleModelGenerated>(GenerateCardsModel);
+            SubscribeToSignal<PuzzleModelGenerated>(GenerateCardsModel);
         }
 
-        private void GenerateCardsModel(OnPuzzleModelGenerated signal)
+        private void GenerateCardsModel(PuzzleModelGenerated signal)
         {
             model.GenerateCardModels(signal.PuzzleModel);
             view.GenerateCards(model, configuration);
