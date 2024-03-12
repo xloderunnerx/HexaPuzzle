@@ -13,3 +13,6 @@ MonoBehaviour:
   m_Name: CardsHandConfiguration
   m_EditorClassIdentifier: 
   isEnabled: 1
+  cardViewPrefab: {fileID: 4404327660304153435, guid: ca0ffa9aef0cc9c4591bfef760c9e81c, type: 3}
+  cardPuzzleCellViewPrefab: {fileID: 5175017974881853138, guid: b6febf3a5e24ecc468cb42a2d2f05d90, type: 3}
+  defaultSortingOrder: 10
