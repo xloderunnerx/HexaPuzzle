@@ -21,10 +21,10 @@ namespace App.Features.PuzzlePainter
 
         public override void SubscribeToSignals()
         {
-            SubscribeToSignal<OnPuzzleModelGenerated>(PaintPuzzle);
+            SubscribeToSignal<PuzzleModelGenerated>(PaintPuzzle);
         }
 
-        private void PaintPuzzle(OnPuzzleModelGenerated signal)
+        private void PaintPuzzle(PuzzleModelGenerated signal)
         {
             model.PaintPuzzle(signal.PuzzleModel, configuration);
         }

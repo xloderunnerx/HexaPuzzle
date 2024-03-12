@@ -1,4 +1,4 @@
-using App.Core.HexagonalGrid;
+using App.Core.Grid;
 using App.Core.Puzzle;
 using Hexagonal;
 using System.Collections.Generic;
@@ -16,14 +16,14 @@ namespace App.Features.PuzzleModelGenerator
             puzzleModel = new PuzzleModel();
         }
 
-        public void GeneratePuzzleModel(HexagonalGridModel gridModel, PuzzleModelGeneratorConfiguration configuration)
+        public void GeneratePuzzleModel(GridModel gridModel, PuzzleModelGeneratorConfiguration configuration)
         {
             puzzleModel = DivideGridIntoVoronoiSegments(gridModel, configuration.segmentsCount);
             puzzleModel.radius = gridModel.radius;
             puzzleModel.RemoveEmptySegments();
         }
 
-        private PuzzleModel DivideGridIntoVoronoiSegments(HexagonalGridModel gridModel, int numberOfSegments)
+        private PuzzleModel DivideGridIntoVoronoiSegments(GridModel gridModel, int numberOfSegments)
         {
             // Generate seed points
             List<Vector3Hex> seedPoints = GenerateSeedPoints(gridModel, numberOfSegments);
@@ -47,7 +47,7 @@ namespace App.Features.PuzzleModelGenerator
             return new PuzzleModel(segments.Values.ToList());
         }
 
-        private List<Vector3Hex> GenerateSeedPoints(HexagonalGridModel gridModel, int numberOfSegments)
+        private List<Vector3Hex> GenerateSeedPoints(GridModel gridModel, int numberOfSegments)
         {
             // Placeholder: Implement logic to generate seed points within the grid bounds
             // This could be random, evenly spaced, or based on specific criteria

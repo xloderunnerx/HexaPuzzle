@@ -22,18 +22,18 @@ namespace App.Features.PuzzleModelGenerator
 
         public override void SubscribeToSignals()
         {
-            SubscribeToSignal<OnHexagonalGridModelGenerated>(GeneratePuzzleModel);
+            SubscribeToSignal<GridModelGenerated>(GeneratePuzzleModel);
         }
 
         public override void DeclareSignals()
         {
-            DeclareSignal<OnPuzzleModelGenerated>();
+            DeclareSignal<PuzzleModelGenerated>();
         }
 
-        private void GeneratePuzzleModel(OnHexagonalGridModelGenerated signal)
+        private void GeneratePuzzleModel(GridModelGenerated signal)
         {
-            model.GeneratePuzzleModel(signal.HexagonalGridModel, configuration);
-            TryFireSignal(new OnPuzzleModelGenerated(model.puzzleModel));
+            model.GeneratePuzzleModel(signal.GridModel, configuration);
+            TryFireSignal(new PuzzleModelGenerated(model.puzzleModel));
         }
     }
 }
