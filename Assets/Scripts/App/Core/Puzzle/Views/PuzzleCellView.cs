@@ -30,7 +30,20 @@ namespace App.Core.Puzzle
 
         public float GetHeightWithoutBorder() => fill.Radius * Mathf.Sqrt(3);
 
-        public Bounds GetWorldBoundsWithoutBorder() => fill.GetWorldBounds();
+        public Bounds GetWorldBoundsWithoutBorder() => RecalculateCorrectBounds(fill.GetWorldBounds());
+
+        private Bounds RecalculateCorrectBounds(Bounds worldBounds)
+        {
+            var min = worldBounds.min;
+            var max = worldBounds.max;
+            var worldWidth = max.x - min.x;
+            var size = worldWidth * 0.5f;
+            var worldHeight = size * Mathf.Sqrt(3);
+            Bounds result = new Bounds(transform.position, Vector2.zero);
+            result.min = new Vector3(min.x, transform.position.y - worldHeight * 0.5f);
+            result.max = new Vector3(max.x, transform.position.y + worldHeight * 0.5f);
+            return result;
+        }
 
         public int SetSortingOrder(int value)
         {
@@ -38,5 +51,12 @@ namespace App.Core.Puzzle
             border.SortingOrder = fill.SortingOrder + 1;
             return border.SortingOrder;
         }
+
+        /*private void OnDrawGizmos()
+        {
+            var bounds = GetWorldBoundsWithoutBorder();
+            Gizmos.DrawSphere(bounds.min, 0.1f);
+            Gizmos.DrawSphere(bounds.max, 0.1f);
+        }*/
     }
 }

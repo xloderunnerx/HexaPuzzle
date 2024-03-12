@@ -32,19 +32,11 @@ namespace App.Core.Puzzle
 
         public Vector2 GetSegmentWorldSize()
         {
-            var cellWidth = segment.FirstOrDefault().GetWidthWithoutBorder();
-            var cellHeight = segment.FirstOrDefault().GetHeightWithoutBorder();
-
-            var minX = segment.Select(cell => cell.TransformHex.position.x).Min();
-            var maxX = segment.Select(cell => cell.TransformHex.position.x).Max();
-            var minY = segment.Select(cell => cell.TransformHex.position.y).Min();
-            var maxY = segment.Select(cell => cell.TransformHex.position.y).Max();
-
-            var xSize = maxX - minX + 1;
-            var ySize = maxY - minY + 1;
-
-            var worldSize = new Vector2(xSize * (cellWidth / 4 * 3) + cellWidth / 4, ySize * cellHeight - cellHeight / 2);
-
+            var bounds = new Bounds(segment.FirstOrDefault().transform.position, segment.FirstOrDefault().GetWorldBoundsWithoutBorder().size);
+            segment.Where(cell => cell != segment.FirstOrDefault())
+                .ToList()
+                .ForEach(cell => bounds.Encapsulate(cell.GetWorldBoundsWithoutBorder()));
+            var worldSize = bounds.size;
             return worldSize;
         }
 
