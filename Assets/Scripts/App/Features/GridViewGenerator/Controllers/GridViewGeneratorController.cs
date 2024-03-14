@@ -56,7 +56,24 @@ namespace App.Features.GridViewGenerator
                 cellView.gameObject.name = $"X: {cellModel.transform.position.x}; Y: {cellModel.transform.position.y}; Z: {cellModel.transform.position.z}";
                 gridView.grid.Add(cellView);
             });
+
+            CalculateCenter(signal);
+
             TryFireSignal(new GridViewGenerated(gridView));
+        }
+
+        private void CalculateCenter(GridModelGenerated signal) 
+        {
+            var gridViewCenter = Vector3.zero;
+
+            gridView.grid.ForEach(cellView =>
+            {
+                gridViewCenter += cellView.GetWorldBounds().center;
+            });
+
+            gridViewCenter /= gridView.grid.Count;
+
+            gridView.center = gridViewCenter;
         }
 
         private void Discard()

@@ -11,6 +11,8 @@ namespace App.Core.Grid
         [SerializeField] private RegularPolygon border;
         [SerializeField] private RegularPolygon fill;
 
+        public Bounds bounds;
+
         public TransformHex TransformHex { get => transformHex; private set => transformHex = value; }
 
         private void Awake()
@@ -21,6 +23,16 @@ namespace App.Core.Grid
         public float GetWidthWithoutBorder() => fill.Radius * 2;
 
         public float GetWidthWithBorder() => fill.Radius * 2 + border.Thickness;
+
+        public Bounds GetWorldBounds() {
+            return fill.GetWorldBounds();
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.DrawSphere(GetWorldBounds().min, 0.1f);
+            Gizmos.DrawSphere(GetWorldBounds().max, 0.1f);
+        }
 
         public float GetHeightWithoutBorder() => fill.Radius * Mathf.Sqrt(3);
 

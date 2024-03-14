@@ -9,8 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8ea02fc25b370b43bb826cd8e656e74, type: 3}
-  m_Name: GridViewGeneratorConfiguration
+  m_Script: {fileID: 11500000, guid: 559392a2da7a8bf42b06d3035fa9ca11, type: 3}
+  m_Name: FeatureGenerator
   m_EditorClassIdentifier: 
-  isEnabled: 1
-  cellViewPrefab: {fileID: 4799200113399780065, guid: 6d260c9ad4b29fd498fc61f9f1c41989, type: 3}
+  featureName: CameraFocus
+  generateModel: 1
+  generateView: 1
+  generateController: 1
+  generateConfiguration: 1
+  generateFeature: 0

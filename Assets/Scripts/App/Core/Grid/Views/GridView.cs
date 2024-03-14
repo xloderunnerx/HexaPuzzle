@@ -11,6 +11,8 @@ namespace App.Core.Grid
     {
         public List<CellView> grid;
 
+        public Vector3 center;
+
         private void Awake()
         {
             grid = new List<CellView>();

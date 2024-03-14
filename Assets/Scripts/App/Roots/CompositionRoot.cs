@@ -6,6 +6,7 @@ using App.Features.PuzzlePainter;
 using Composite.Core;
 using App.Features.HandModelGenerator;
 using App.Features.HandViewGenerator;
+using App.Features.CameraFocus;
 
 public class CompositionRoot : AbstractCompositionRoot
 {
@@ -36,6 +37,7 @@ public class CompositionRoot : AbstractCompositionRoot
         BindFeature<PuzzleViewGeneratorFeature>();
         BindFeature<GridViewGeneratorFeature>();
         BindFeature<GridModelGeneratorFeature>();
+        BindFeature<CameraFocusFeature>();
         BindFeature<PuzzleModelGeneratorFeature>();
     }
 }
